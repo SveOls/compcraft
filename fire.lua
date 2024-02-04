@@ -62,6 +62,8 @@ while true do
     tortoise.turnLeft()
     tortoise.forward()
     tortoise.forward()
+    tortoise.forward()
+    tortoise.forward()
     tortoise.turnRight()
     os.sleep(30)
 end
