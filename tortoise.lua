@@ -10,6 +10,7 @@ function setReturn()
 end
 
 function goReturn()
+    print(checkpoints)
     local a = table.remove(checkpoints)
     while(a) do
         if a == "down" then
