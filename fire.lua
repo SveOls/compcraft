@@ -24,6 +24,7 @@ while true do
     turtle.dropDown(logc - 1)
     tortoise.goReturn()
     tortoise.forward()
+    turtle.select(fuelslot)
     turtle.suckUp()
     turtle.select(pieceslot)
     local piecec = turtle.getItemCount()
