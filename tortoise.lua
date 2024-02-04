@@ -29,7 +29,7 @@ function goReturn()
             turtle.dig()
             forward()
         end
-        a = checkpoints.pop()
+        a = table.remove(checkpoints)
     end
 end
 
