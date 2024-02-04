@@ -20,10 +20,7 @@ function goReturn()
             turtle.digDown()
             down()
         elseif a == "forward" then
-            local t = back()
-            print(t)
-            if not t then
-                print("what")
+            if not back() then
                 turtle.turnLeft()
                 turtle.turnLeft()
                 turtle.dig()
