@@ -27,15 +27,13 @@ while true do
     turtle.suckUp()
     turtle.select(pieceslot)
     local piecec = turtle.getItemCount()
-    turtle.craft(56 - pieceslot)
-    piecec = turtle.getItemCount()
     if piecec > 1 then
         turtle.dropUp(piecec - 1)
     end
     tortoise.turnLeft()
     for i=1,16 do
         turtle.select(i)
-        if i == logslot or i == stickslot or i == saplingslot or i == pieceslot or i == fuelslot then
+        if i == logslot or i == stickslot or i == appleslot or i == saplingslot or i == pieceslot or i == fuelslot then
             local c = turtle.getItemCount()
             if c > 1 then
                 turtle.drop(c - 1)
