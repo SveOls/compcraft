@@ -19,18 +19,27 @@ while true do
     tortoise.up()
     tortoise.up()
     tortoise.forward()
-    turtle.select(logslot)
-    local logc = turtle.getItemCount()
-    turtle.dropDown(logc - 1)
+    while turtle.detectDown() do
+        turtle.select(logslot)
+        local logc = turtle.getItemCount()
+        turtle.dropDown(logc - 1)
+        tortoise.forward()
+    end
+    tortoise.goReturn()
+    tortoise.setReturn()
+    tortoise.forward()
+    while turtle.detectUp() do
+        turtle.select(fuelslot)
+        turtle.suckUp()
+        turtle.select(pieceslot)
+        local piecec = turtle.getItemCount()
+        if piecec > 1 then
+            turtle.dropUp(piecec - 1)
+        end
+        tortoise.forward()
+    end
     tortoise.goReturn()
     tortoise.forward()
-    turtle.select(fuelslot)
-    turtle.suckUp()
-    turtle.select(pieceslot)
-    local piecec = turtle.getItemCount()
-    if piecec > 1 then
-        turtle.dropUp(piecec - 1)
-    end
     tortoise.turnLeft()
     for i=1,16 do
         turtle.select(i)
