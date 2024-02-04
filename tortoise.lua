@@ -10,10 +10,10 @@ function setReturn()
 end
 
 function goReturn()
-    local a = checkpoints.pop()
-    if a == nil then
+    if checkpoints == nil then
         return
     end
+    local a = checkpoints.pop()
     while(a) do
         if a == "down" then
             turtle.digUp()
