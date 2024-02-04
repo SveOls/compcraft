@@ -63,21 +63,26 @@ function groundLevel()
 end
 
 function up()
-    if turtle.up() then
+    local r = turtle.up()
+    if r then
         y = y + 1
         checkpoints.push("up")
     end
+    return r
 end
 
-function down() 
-    if turtle.down() then
+function down()
+    local r = turtle.down()
+    if r then
         y = y - 1
         checkpoints.push("down")
     end
+    return r
 end
 
 function forward()
-    if turtle.forward() then
+    local r = turtle.forward()
+    if r then
         checkpoints.push("forward")
         if facing == "front" then
             x = x + 1
@@ -89,10 +94,12 @@ function forward()
             z = z + 1
         end
     end
+    return r
 end
 
 function back()
-    if turtle.back() then
+    local r = turtle.back()
+    if r then
         checkpoints.push("back")
         if facing == "front" then
             x = x - 1
@@ -104,32 +111,39 @@ function back()
             z = z - 1
         end
     end
+    return r
 end
 
 function turnLeft()
-    checkpoints.push("turnLeft")
-    if facing == "front" then
-        facing = "left"
-    elseif facing == "left" then
-        facing = "back" 
-    elseif facing == "back" then 
-        facing = "right"
-    elseif facing == "right" then
-        facing = "front"
+    local r = turtle.turnLeft()
+    if r then
+        checkpoints.push("turnLeft")
+        if facing == "front" then
+            facing = "left"
+        elseif facing == "left" then
+            facing = "back" 
+        elseif facing == "back" then 
+            facing = "right"
+        elseif facing == "right" then
+            facing = "front"
+        end
     end
-    turtle.turnLeft()
+    return r
 end
 
 function turnRight()
-    checkpoints.push("turnRight")
-    if facing == "front" then
-        facing = "right"
-    elseif facing == "left" then
-        facing = "front" 
-    elseif facing == "back" then 
-        facing = "left"
-    elseif facing == "right" then
-        facing = "back"
+    local r = turtle.turnLeft()
+    if r then
+        checkpoints.push("turnRight")
+        if facing == "front" then
+            facing = "right"
+        elseif facing == "left" then
+            facing = "front" 
+        elseif facing == "back" then 
+            facing = "left"
+        elseif facing == "right" then
+            facing = "back"
+        end
     end
-    turtle.turnRight()
+    return r
 end
