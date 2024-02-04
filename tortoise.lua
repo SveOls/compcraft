@@ -11,6 +11,9 @@ end
 
 function goReturn()
     local a = checkpoints.pop()
+    if a == nil then
+        return
+    end
     while(a) do
         if a == "down" then
             turtle.digUp()

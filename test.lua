@@ -34,8 +34,8 @@ while true do
                 turtle.digUp()
                 tortoise.up()
             end
+            tortoise.goReturn()
         end
-        tortoise.goReturn()
         turtle.select(sapling)
         turtle.place()
         if turtle.compare() then 
