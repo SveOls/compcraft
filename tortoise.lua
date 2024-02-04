@@ -135,7 +135,7 @@ function turnLeft()
 end
 
 function turnRight()
-    local r = turtle.turnLeft()
+    local r = turtle.turnRight()
     if r then
         checkpoints.push("turnRight")
         if facing == "front" then
