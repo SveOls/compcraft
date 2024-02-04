@@ -13,6 +13,7 @@ function goReturn()
     print(checkpoints)
     local a = table.remove(checkpoints)
     while(a) do
+        print(a)
         if a == "down" then
             turtle.digUp()
             up()
