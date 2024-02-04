@@ -43,15 +43,8 @@ while true do
     tortoise.turnLeft()
     for i=1,16 do
         turtle.select(i)
-        if turtle.compareTo(pieceslot) and i ~= fuelslot then
-            if i == pieceslot then
-                local c = turtle.getItemCount()
-                if c > 1 then
-                    turtle.drop(c - 1)
-                end
-            else
-                turtle.drop()
-            end
+        if turtle.compareTo(pieceslot) and i ~= fuelslot and i ~= pieceslot then
+            turtle.drop()
         end
     end
     tortoise.turnRight()
@@ -60,8 +53,8 @@ while true do
     tortoise.turnLeft()
     for i=1,16 do
         turtle.select(i)
-        if i ~= logslot and i ~= fuelslot then
-            if  i == stickslot or i == appleslot or i == saplingslot or i == pieceslot then
+        if i ~= logslot and i ~= fuelslot and i ~= pieceslot then
+            if  i == stickslot or i == appleslot or i == saplingslot then
                 local c = turtle.getItemCount()
                 if c > 1 then
                     turtle.drop(c - 1)
@@ -77,5 +70,5 @@ while true do
     tortoise.forward()
     tortoise.forward()
     tortoise.turnRight()
-    os.sleep(30)
+    os.sleep(120)
 end
