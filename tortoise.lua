@@ -22,12 +22,14 @@ function goReturn()
             turtle.digDown()
             down()
         elseif a == "forward" then
-            turtle.turnLeft()
-            turtle.turnLeft()
-            turtle.dig()
-            turtle.turnLeft()
-            turtle.turnLeft()
-            back()
+            if not back() then
+                turtle.turnLeft()
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.turnLeft()
+                turtle.turnLeft()
+                back()
+            end
         elseif a == "back" then
             turtle.dig()
             forward()
