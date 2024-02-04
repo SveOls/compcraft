@@ -21,6 +21,9 @@ while true do
     else
         roundssince = roundssince + 1
     end
+    if turtle.detect() then
+        turtle.dig()
+    end
     tortoise.forward()
     while not turtle.inspectDown() do
         tortoise.turnRight()
@@ -49,11 +52,17 @@ while true do
                 if turtle.compare() then
                     tortoise.turnLeft()
                 else
-                    turtle.forward()
+                    if turtle.detect() then
+                        turtle.dig()
+                    end
+                    tortoise.forward()
                 end
             end
         else
             turtle.suckDown()
+            if turtle.detect() then
+                turtle.dig()
+            end
             tortoise.forward()
         end
     end
