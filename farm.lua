@@ -11,18 +11,10 @@ while true do
     while tortoise.forward() do
         distance = distance + 1
         tortoise.turnLeft()
-        if tortoise.forward() then
-            turtle.digDown()
-            tortoise.back()
-        end
-        tortoise.place()
+        turtle.place()
         tortoise.turnLeft()
         tortoise.turnLeft()
-        if tortoise.forward() then
-            turtle.digDown()
-            tortoise.back()
-        end
-        tortoise.place()
+        turtle.place()
         tortoise.turnLeft()
     end
     while distance > 0 do
