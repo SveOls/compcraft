@@ -10,10 +10,11 @@ function setReturn()
 end
 
 function goReturn()
+    save_check = false
     print(checkpoints)
     local a = table.remove(checkpoints)
     while(a) do
-        print(a)
+        print("oh")
         if a == "down" then
             turtle.digUp()
             up()
