@@ -1,15 +1,19 @@
 local fuelslot = 16
 local log = 1
 local sapling = 2
-local x, y, z = 0, 0, 0
 local roundssince = 0
+os.loadAPI("tortoise")
 while true do
+    turtle.select(fuelslot)
+    peripheral.call("back", "clear")
+    peripheral.call("back", "write", turtle.getItemCount().."\n")
+    peripheral.call("back", "write", turtle.getFuelLevel())
     if turtle.getFuelLevel() < 100 then
         write("refueling from ")
         write(turtle.getFuelLevel())
         write(" to ")
         turtle.select(fuelslot)
-        turtle.refuel()
+        tortoise.refuel()
         print(turtle.getFuelLevel())
         write("time since last refuel: ")
         print(roundssince)
@@ -17,64 +21,47 @@ while true do
     else
         roundssince = roundssince + 1
     end
-    turtle.forward()
-    x = x + 1
+    tortoise.forward()
     while not turtle.inspectDown() do
-        turtle.turnRight()
+        tortoise.turnRight()
         turtle.select(log)
-        if turtle.compare() then
+        local tree = turtle.compare()
+        if tree then
+            tortoise.setReturn()
             turtle.dig()
-            turtle.forward()
-            z = z + 1
+            tortoise.forward()
             while turtle.compareUp() do
                 turtle.digUp()
-                turtle.up()
-                y = y + 1
+                tortoise.up()
             end
         end
-        while y > 0 do
-            turtle.down()
-            y = y - 1
-        end
-        while z > 0 do 
-            turtle.back()
-            z = z - 1
-        end
+        tortoise.goReturn()
         turtle.select(sapling)
         turtle.place()
         if turtle.compare() then 
             turtle.suck()
             turtle.suckDown()
-            turtle.turnLeft()
-            turtle.forward()
-            x = x + 1
+            tortoise.turnLeft()
+            turtle.place()
+            if turtle.compare() then
+                tortoise.turnLeft()
+            else
+                turtle.select(log)
+                if turtle.compare() then
+                    tortoise.turnLeft()
+                else
+                    turtle.forward()
+                end
+            end
         else
             turtle.suckDown()
-            turtle.forward()
-            turtle.suckDown()
-            turtle.forward()
-            z = z + 2
-            turtle.turnRight()
-            while x > 0 do
-                turtle.suckDown()
-                turtle.forward()
-                x = x - 1
-            end
-            turtle.turnRight() 
-            turtle.suckDown()
-            turtle.forward() 
-            turtle.suckDown()
-            turtle.suck()
-            turtle.forward() 
-            z = z - 2
-            turtle.turnRight()
+            tortoise.forward()
         end
     end
+    tortoise.turnRight()
     turtle.select(log)
     local totallog = turtle.getItemCount()
     turtle.dropDown(totallog - 1)
-    turtle.select(sapling)
-    turtle.suckDown()
     for i=1,16 do
         if i ~= log and i ~= sapling and i ~= fuelslot then
             turtle.select(i)
