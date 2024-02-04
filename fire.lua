@@ -33,6 +33,23 @@ while true do
     tortoise.turnLeft()
     for i=1,16 do
         turtle.select(i)
+        if turtle.compareTo(pieceslot) and i ~= fuelslot then
+            if i == pieceslot then
+                local c = turtle.getItemCount()
+                if c > 1 then
+                    turtle.drop(c - 1)
+                end
+            else
+                turtle.drop()
+            end
+        end
+    end
+    tortoise.turnRight()
+    tortoise.forward()
+    tortoise.forward()
+    tortoise.turnLeft()
+    for i=1,16 do
+        turtle.select(i)
         if i == logslot or i == stickslot or i == appleslot or i == saplingslot or i == pieceslot or i == fuelslot then
             local c = turtle.getItemCount()
             if c > 1 then
