@@ -25,8 +25,7 @@ while true do
     while not turtle.inspectDown() do
         tortoise.turnRight()
         turtle.select(log)
-        local tree = turtle.compare()
-        if tree then
+        if turtle.compare() then
             tortoise.setReturn()
             turtle.dig()
             tortoise.forward()

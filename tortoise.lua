@@ -31,6 +31,10 @@ function goReturn()
         elseif a == "back" then
             turtle.dig()
             forward()
+        elseif a == "turnRight" then
+            turnLeft()
+        elseif a == "turnLeft" then
+            turnRight()
         end
         a = table.remove(checkpoints)
     end
